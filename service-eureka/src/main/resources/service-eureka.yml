@@ -1,0 +1,21 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: service-eureka
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10  #客户端向服务器（注册中心发送心跳的时间间隔）
+    leaseExpirationDurationInSeconds: 120  #服务器（注册中心）租期到期的时间, 也就是说服务器在收到最后一次心跳的时间上线
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZoen: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    enableSelfPreservation: false  # 关闭自我保护 当已注册的服务出现故障时直接踢掉
+
