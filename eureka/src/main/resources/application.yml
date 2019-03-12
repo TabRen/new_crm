@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: crm-eureka
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZoen: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    enableSelfPreservation: false  # 关闭自我保护 当已注册的服务出现故障时直接踢掉
+
+server:
+  port: 8761
